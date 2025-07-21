@@ -4,11 +4,32 @@ import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Home, ArrowLeft, Music, FileText, Lightbulb, BookOpen } from 'lucide-react';
+import { Home, Music, FileText, Lightbulb, BookOpen } from 'lucide-react';
+import { useEffect } from 'react';
 
 export default function NotFound() {
   const t = useTranslations('notFound');
   const tNav = useTranslations('navigation');
+
+  // 设置SEO meta标签
+  useEffect(() => {
+    // 设置页面标题
+    document.title = '404 - Page Not Found | AI Song Maker';
+    
+    // 添加noindex meta标签
+    const metaRobots = document.createElement('meta');
+    metaRobots.name = 'robots';
+    metaRobots.content = 'noindex, nofollow, noarchive, nosnippet';
+    document.head.appendChild(metaRobots);
+
+    return () => {
+      // 清理meta标签
+      const existingMeta = document.head.querySelector('meta[name="robots"]');
+      if (existingMeta) {
+        document.head.removeChild(existingMeta);
+      }
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-100">
@@ -33,12 +54,6 @@ export default function NotFound() {
               <Link href="/">
                 <Home className="mr-2 h-5 w-5" />
                 {t('buttons.home')}
-              </Link>
-            </Button>
-            <Button asChild variant="outline" size="lg">
-              <Link href="javascript:history.back()">
-                <ArrowLeft className="mr-2 h-5 w-5" />
-                {t('buttons.previous')}
               </Link>
             </Button>
           </div>
