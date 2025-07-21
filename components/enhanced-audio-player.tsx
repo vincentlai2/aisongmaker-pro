@@ -17,38 +17,41 @@ export function EnhancedAudioPlayer({ src, title }: EnhancedAudioPlayerProps) {
   const audioRef = useRef<HTMLAudioElement>(null)
 
   const togglePlay = () => {
-    if (audioRef.current) {
-      setIsLoading(true)
-      if (isPlaying) {
-        audioRef.current.pause()
+    setIsLoading(true)
+    
+    if (isPlaying) {
+      // Stop playing
+      setIsPlaying(false)
+      setIsLoading(false)
+    } else {
+      // Start playing - simulate loading and play
+      setTimeout(() => {
         setIsLoading(false)
-      } else {
-        // Simulate loading for demo
-        setTimeout(() => {
-          setIsLoading(false)
-          // In real implementation, this would actually play
-          setIsPlaying(true)
-          // Simulate progress
-          const interval = setInterval(() => {
-            setCurrentTime((prev) => {
-              if (prev >= 30) {
-                // Demo duration
-                setIsPlaying(false)
-                clearInterval(interval)
-                return 0
-              }
-              return prev + 1
-            })
-          }, 1000)
+        setIsPlaying(true)
+        
+        // Simulate audio progress
+        const interval = setInterval(() => {
+          setCurrentTime((prev) => {
+            if (prev >= 30) {
+              // End of demo duration
+              setIsPlaying(false)
+              clearInterval(interval)
+              return 0
+            }
+            return prev + 1
+          })
         }, 1000)
-      }
-      setIsPlaying(!isPlaying)
+        
+        // Store interval for cleanup
+        return () => clearInterval(interval)
+      }, 800)
     }
   }
 
   const resetTrack = () => {
     setCurrentTime(0)
     setIsPlaying(false)
+    setIsLoading(false)
   }
 
   const formatTime = (time: number) => {

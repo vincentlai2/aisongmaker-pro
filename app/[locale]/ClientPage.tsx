@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Header } from "@/components/header"
@@ -46,6 +47,9 @@ import {
 
 export default function ClientPage() {
   const [activeFilter, setActiveFilter] = useState("All")
+  const [lyricsInput, setLyricsInput] = useState("")
+  const [isGenerating, setIsGenerating] = useState(false)
+  const [uploadHover, setUploadHover] = useState(false)
 
   const songCategories = ["All", "Pop", "Rap", "Lo-fi", "Rock", "Electronic"]
 
@@ -122,15 +126,36 @@ export default function ClientPage() {
             <div className="max-w-2xl mx-auto">
               <div className="mb-6">
                 {/* Upload Area */}
-                <div className="border-2 border-dashed border-gray-300 rounded-2xl p-12 hover:border-purple-400 transition-all duration-300 bg-gray-50/50 hover:bg-purple-50/30 hover:scale-105 transform">
+                <div 
+                  className={`border-2 border-dashed rounded-2xl p-12 transition-all duration-300 transform hover:scale-105 ${
+                    uploadHover 
+                      ? 'border-purple-400 bg-purple-50/50' 
+                      : 'border-gray-300 bg-gray-50/50'
+                  } hover:border-purple-400 hover:bg-purple-50/30`}
+                  onMouseEnter={() => setUploadHover(true)}
+                  onMouseLeave={() => setUploadHover(false)}
+                >
                   <div className="flex flex-col items-center">
                     <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center mb-4 hover:scale-110 transition-transform duration-300">
                       <Upload className="w-8 h-8 text-white" />
                     </div>
-                    <p className="text-gray-600 mb-2">Type your lyrics or describe your song idea</p>
-                    <button className="text-purple-600 hover:text-purple-700 underline text-sm hover:scale-105 transition-transform duration-300">
-                      Choose Text File
-                    </button>
+                    <div className="w-full max-w-lg mx-auto">
+                      <textarea
+                        className="w-full h-32 p-4 border border-gray-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm"
+                        placeholder="Type your lyrics or describe your song idea...\ne.g. 'A soft piano ballad about long-distance love with gentle vocals'"
+                        value={lyricsInput}
+                        onChange={(e) => setLyricsInput(e.target.value)}
+                        maxLength={2000}
+                      />
+                      <div className="flex justify-between items-center mt-2">
+                        <button className="text-purple-600 hover:text-purple-700 underline text-sm hover:scale-105 transition-transform duration-300">
+                          Choose Text File
+                        </button>
+                        <span className="text-xs text-gray-500">
+                          {lyricsInput.length}/2000
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -141,10 +166,30 @@ export default function ClientPage() {
               <div className="space-y-4">
                 <Button
                   size="lg"
-                  className="w-full max-w-md bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-4 text-lg font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 transform"
+                  disabled={!lyricsInput.trim() || isGenerating}
+                  onClick={() => {
+                    if (lyricsInput.trim()) {
+                      setIsGenerating(true)
+                      // Simulate generation process
+                      setTimeout(() => {
+                        setIsGenerating(false)
+                        alert('Demo: Song generation would start here!')
+                      }, 2000)
+                    }
+                  }}
+                  className="w-full max-w-md bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-4 text-lg font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 transform disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
-                  <Sparkles className="w-5 h-5 mr-2" />
-                  Generate Your Songs
+                  {isGenerating ? (
+                    <>
+                      <div className="w-5 h-5 mr-2 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      Generating...
+                    </>
+                  ) : (
+                    <>
+                      <Sparkles className="w-5 h-5 mr-2" />
+                      Generate Your Songs
+                    </>
+                  )}
                 </Button>
 
                 <div className="flex gap-4 justify-center">
@@ -315,10 +360,13 @@ export default function ClientPage() {
               <Card className="border-0 shadow-sm hover:shadow-lg transition-all duration-300 bg-white hover:scale-105 transform">
                 <CardContent className="p-6">
                   <div className="relative mb-4">
-                    <img
+                    <Image
                       src="/images/music-cover-1.png"
                       alt="AI Song Maker generated City Lights track"
                       className="w-full h-48 object-cover rounded-lg"
+                      width={400}
+                      height={192}
+                      priority
                     />
                   </div>
                   <h3 className="font-semibold text-lg mb-2">"City Lights"</h3>
@@ -334,10 +382,13 @@ export default function ClientPage() {
               <Card className="border-0 shadow-sm hover:shadow-lg transition-all duration-300 bg-white hover:scale-105 transform">
                 <CardContent className="p-6">
                   <div className="relative mb-4">
-                    <img
+                    <Image
                       src="/images/music-cover-2.png"
                       alt="AI Song Generator created Echoes of Time"
                       className="w-full h-48 object-cover rounded-lg"
+                      width={400}
+                      height={192}
+                      priority
                     />
                   </div>
                   <h3 className="font-semibold text-lg mb-2">"Echoes of Time"</h3>
@@ -353,10 +404,12 @@ export default function ClientPage() {
               <Card className="border-0 shadow-sm hover:shadow-lg transition-all duration-300 bg-white hover:scale-105 transform">
                 <CardContent className="p-6">
                   <div className="relative mb-4">
-                    <img
+                    <Image
                       src="/images/music-cover-3.png"
                       alt="Loop 808 made with AI Song Maker"
                       className="w-full h-48 object-cover rounded-lg"
+                      width={400}
+                      height={192}
                     />
                   </div>
                   <h3 className="font-semibold text-lg mb-2">"Loop 808"</h3>
@@ -372,10 +425,12 @@ export default function ClientPage() {
               <Card className="border-0 shadow-sm hover:shadow-lg transition-all duration-300 bg-white hover:scale-105 transform">
                 <CardContent className="p-6">
                   <div className="relative mb-4">
-                    <img
+                    <Image
                       src="/images/music-cover-4.png"
                       alt="Smile Again - AI Song Generator demo"
                       className="w-full h-48 object-cover rounded-lg"
+                      width={400}
+                      height={192}
                     />
                   </div>
                   <h3 className="font-semibold text-lg mb-2">"Smile Again"</h3>
