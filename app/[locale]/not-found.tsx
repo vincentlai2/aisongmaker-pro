@@ -32,30 +32,52 @@ export default function NotFound() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-100">
-      <div className="container mx-auto px-4 py-16">
+    <div className="min-h-screen bg-white">
+      <div className="relative px-4 pb-20 pt-20">
         <div className="max-w-4xl mx-auto text-center">
-          {/* 404 Hero Section */}
+          {/* 404 Hero Section - 匹配首页风格 */}
           <div className="mb-12">
-            <div className="text-8xl md:text-9xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 mb-6">
-              404
-            </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              {t('heading')}
+            <div className="text-6xl md:text-7xl font-bold text-gray-900 mb-6">404</div>
+            <h1 className="font-bold text-gray-900 mb-6 leading-tight text-3xl">
+              {t('heading')} - But You Can Still Create Amazing{" "}
+              <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                AI Songs
+              </span>
             </h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              {t('description')}
+            <p className="text-gray-600 mb-12 max-w-3xl mx-auto text-lg">
+              {t('description')} But don't worry, you can still create original AI songs from your lyrics, moods, or ideas.
             </p>
           </div>
 
-          {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <Button asChild size="lg" className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700">
+          {/* Action Buttons - 匹配首页按钮风格 */}
+          <div className="space-y-4 mb-12">
+            <Button
+              asChild
+              size="lg"
+              className="w-full max-w-md bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-4 text-lg font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 transform"
+            >
               <Link href="/">
-                <Home className="mr-2 h-5 w-5" />
+                <Home className="w-5 h-5 mr-2" />
                 {t('buttons.home')}
               </Link>
             </Button>
+            
+            <div className="flex gap-4 justify-center">
+              <Button
+                asChild
+                variant="outline"
+                className="text-purple-600 border-purple-200 hover:bg-purple-50 hover:scale-105 transition-all duration-300"
+              >
+                <Link href="/prompt-examples">Listen to Demo</Link>
+              </Button>
+              <Button
+                asChild
+                variant="outline" 
+                className="text-purple-600 border-purple-200 hover:bg-purple-50 hover:scale-105 transition-all duration-300"
+              >
+                <Link href="/use-cases">View Use Cases</Link>
+              </Button>
+            </div>
           </div>
 
           {/* Suggestions Card */}
