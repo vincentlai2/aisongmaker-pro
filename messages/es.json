@@ -1,0 +1,176 @@
+{
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "retry": "Reintentar",
+    "close": "Cerrar",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "continue": "Continuar",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "submit": "Enviar",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "all": "Todo",
+    "none": "Ninguno",
+    "select": "Seleccionar",
+    "download": "Descargar",
+    "upload": "Subir",
+    "play": "Reproducir",
+    "pause": "Pausar",
+    "stop": "Detener"
+  },
+  "navigation": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "features": "Características",
+    "pricing": "Precios",
+    "blog": "Blog",
+    "contact": "Contacto",
+    "login": "Iniciar sesión",
+    "signup": "Registrarse",
+    "dashboard": "Panel",
+    "profile": "Perfil",
+    "settings": "Configuración",
+    "logout": "Cerrar sesión"
+  },
+  "hero": {
+    "title": "Generador de Canciones IA | Crea Canciones IA desde Letras o Ideas en Línea",
+    "subtitle": "Crea canciones IA originales en línea desde tus letras, estados de ánimo o ideas. Elige una voz, selecciona un estilo y descarga pistas completas en segundos. No se necesita experiencia.",
+    "cta": "Crea Tu Canción Ahora",
+    "ctaSecondary": "Ver Demo",
+    "features": {
+      "instant": "Creación Instantánea",
+      "noExperience": "Sin Experiencia Necesaria",
+      "fullLength": "Pistas Completas",
+      "commercial": "Uso Comercial"
+    }
+  },
+  "features": {
+    "title": "Creación Musical IA Poderosa",
+    "subtitle": "Todo lo que necesitas para crear canciones de calidad profesional",
+    "list": {
+      "lyricsToMusic": {
+        "title": "Letras a Música",
+        "description": "Transforma tus letras en canciones completas con melodías y arreglos generados por IA"
+      },
+      "voiceSelection": {
+        "title": "Selección de Voz",
+        "description": "Elige entre una variedad de voces IA para que coincidan con el estilo y estado de ánimo de tu canción"
+      },
+      "genreStyles": {
+        "title": "Múltiples Géneros",
+        "description": "Crea canciones en Pop, Rock, Hip-Hop, Electrónica, Jazz y muchos más estilos"
+      },
+      "instantDownload": {
+        "title": "Descarga Instantánea",
+        "description": "Descarga tus canciones completadas en formatos de alta calidad inmediatamente"
+      },
+      "commercialUse": {
+        "title": "Derechos Comerciales",
+        "description": "Usa tus canciones generadas por IA para propósitos comerciales con derechos completos"
+      },
+      "noExperience": {
+        "title": "Amigable para Principiantes",
+        "description": "No se requiere experiencia musical - solo ingresa tus ideas y deja que la IA haga el resto"
+      }
+    }
+  },
+  "musicGenres": {
+    "title": "Explorar Géneros Musicales",
+    "all": "Todo",
+    "pop": "Pop",
+    "rap": "Rap",
+    "lofi": "Lo-fi",
+    "rock": "Rock",
+    "electronic": "Electrónica",
+    "jazz": "Jazz",
+    "classical": "Clásica",
+    "country": "Country",
+    "reggae": "Reggae",
+    "blues": "Blues",
+    "folk": "Folk",
+    "metal": "Metal"
+  },
+  "audioPlayer": {
+    "play": "Reproducir",
+    "pause": "Pausar",
+    "stop": "Detener",
+    "volume": "Volumen",
+    "mute": "Silenciar",
+    "unmute": "Activar sonido",
+    "duration": "Duración",
+    "currentTime": "Tiempo Actual",
+    "loading": "Cargando audio...",
+    "error": "Error al cargar audio"
+  },
+  "prompts": {
+    "title": "Sugerencias de Creación de Canciones",
+    "subtitle": "Inspírate con estos ejemplos de sugerencias",
+    "examples": {
+      "love": "Crea una balada romántica sobre encontrar el amor verdadero",
+      "adventure": "Escribe una canción alegre sobre ir de aventura",
+      "nostalgia": "Compón una canción nostálgica sobre recuerdos de la infancia",
+      "motivation": "Genera una canción inspiradora sobre superar desafíos",
+      "party": "Haz un himno de fiesta enérgico para bailar",
+      "peaceful": "Crea una canción tranquila y pacífica para relajarse"
+    }
+  },
+  "footer": {
+    "description": "Crea canciones IA increíbles desde tus letras e ideas",
+    "links": {
+      "product": "Producto",
+      "company": "Empresa",
+      "support": "Soporte",
+      "legal": "Legal"
+    },
+    "copyright": "© 2024 AI Song Maker. Todos los derechos reservados.",
+    "social": {
+      "twitter": "Twitter",
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "youtube": "YouTube"
+    }
+  },
+  "seo": {
+    "title": "Generador de Canciones IA | Crea Canciones IA desde Letras o Ideas en Línea – AIsongmaker.pro",
+    "description": "Crea canciones IA originales en línea desde tus letras, estados de ánimo o ideas. Elige una voz, selecciona un estilo y descarga pistas completas en segundos. No se necesita experiencia.",
+    "keywords": "generador de canciones IA, letras a música, generar música en línea, creador de música IA, texto a canción, generador de música gratis, AI Song Maker, Generador de Canciones IA"
+  },
+  "language": {
+    "switch": "Cambiar Idioma",
+    "current": "Idioma Actual",
+    "select": "Seleccionar Idioma"
+  },
+  "notFound": {
+    "title": "Página No Encontrada",
+    "heading": "404 - Página No Encontrada",
+    "description": "Lo sentimos, la página que buscas no existe o ha sido movida.",
+    "suggestions": {
+      "title": "Esto es lo que puedes hacer:",
+      "checkUrl": "Verifica la URL por errores de escritura",
+      "goHome": "Volver a la página principal",
+      "searchSite": "Buscar en nuestro sitio",
+      "contactUs": "Contactar a nuestro equipo de soporte"
+    },
+    "buttons": {
+      "home": "Volver al Inicio",
+      "previous": "Regresar",
+      "search": "Buscar Sitio"
+    },
+    "popularPages": {
+      "title": "Páginas Populares",
+      "generator": "Generador de Canciones IA",
+      "generatorDesc": "Crea canciones IA al instante",
+      "examples": "Ejemplos de Prompts",
+      "examplesDesc": "Inspírate con ejemplos",
+      "useCases": "Casos de Uso",
+      "useCasesDesc": "Descubre casos de uso",
+      "blog": "Blog",
+      "blogDesc": "Lee nuestras últimas publicaciones"
+    },
+    "testNote": "Esta es una vista previa del diseño de la página 404. La configuración real de la página 404 necesita más depuración."
+  }
+}

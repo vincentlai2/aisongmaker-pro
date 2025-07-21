@@ -1,0 +1,176 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Retry",
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "submit": "Submit",
+    "search": "Search",
+    "filter": "Filter",
+    "all": "All",
+    "none": "None",
+    "select": "Select",
+    "download": "Download",
+    "upload": "Upload",
+    "play": "Play",
+    "pause": "Pause",
+    "stop": "Stop"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "features": "Features",
+    "pricing": "Pricing",
+    "blog": "Blog",
+    "contact": "Contact",
+    "login": "Login",
+    "signup": "Sign Up",
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+  "hero": {
+    "title": "AI Song Generator | Make AI Songs from Lyrics or Ideas Online",
+    "subtitle": "Create original AI songs online from your lyrics, moods, or ideas. Choose a voice, pick a style, and download full-length tracks in seconds. No experience needed.",
+    "cta": "Create Your Song Now",
+    "ctaSecondary": "Watch Demo",
+    "features": {
+      "instant": "Instant Creation",
+      "noExperience": "No Experience Needed",
+      "fullLength": "Full-Length Tracks",
+      "commercial": "Commercial Use"
+    }
+  },
+  "features": {
+    "title": "Powerful AI Music Creation",
+    "subtitle": "Everything you need to create professional-quality songs",
+    "list": {
+      "lyricsToMusic": {
+        "title": "Lyrics to Music",
+        "description": "Transform your lyrics into complete songs with AI-generated melodies and arrangements"
+      },
+      "voiceSelection": {
+        "title": "Voice Selection",
+        "description": "Choose from a variety of AI voices to match your song's style and mood"
+      },
+      "genreStyles": {
+        "title": "Multiple Genres",
+        "description": "Create songs in Pop, Rock, Hip-Hop, Electronic, Jazz, and many more styles"
+      },
+      "instantDownload": {
+        "title": "Instant Download",
+        "description": "Download your completed songs in high-quality formats immediately"
+      },
+      "commercialUse": {
+        "title": "Commercial Rights",
+        "description": "Use your AI-generated songs for commercial purposes with full rights"
+      },
+      "noExperience": {
+        "title": "Beginner Friendly",
+        "description": "No musical experience required - just input your ideas and let AI do the rest"
+      }
+    }
+  },
+  "musicGenres": {
+    "title": "Explore Music Genres",
+    "all": "All",
+    "pop": "Pop",
+    "rap": "Rap",
+    "lofi": "Lo-fi",
+    "rock": "Rock",
+    "electronic": "Electronic",
+    "jazz": "Jazz",
+    "classical": "Classical",
+    "country": "Country",
+    "reggae": "Reggae",
+    "blues": "Blues",
+    "folk": "Folk",
+    "metal": "Metal"
+  },
+  "audioPlayer": {
+    "play": "Play",
+    "pause": "Pause",
+    "stop": "Stop",
+    "volume": "Volume",
+    "mute": "Mute",
+    "unmute": "Unmute",
+    "duration": "Duration",
+    "currentTime": "Current Time",
+    "loading": "Loading audio...",
+    "error": "Error loading audio"
+  },
+  "prompts": {
+    "title": "Song Creation Prompts",
+    "subtitle": "Get inspired with these example prompts",
+    "examples": {
+      "love": "Create a romantic ballad about finding true love",
+      "adventure": "Write an upbeat song about going on an adventure",
+      "nostalgia": "Compose a nostalgic song about childhood memories",
+      "motivation": "Generate an inspiring song about overcoming challenges",
+      "party": "Make an energetic party anthem for dancing",
+      "peaceful": "Create a calm, peaceful song for relaxation"
+    }
+  },
+  "footer": {
+    "description": "Create amazing AI songs from your lyrics and ideas",
+    "links": {
+      "product": "Product",
+      "company": "Company",
+      "support": "Support",
+      "legal": "Legal"
+    },
+    "copyright": "© 2024 AI Song Maker. All rights reserved.",
+    "social": {
+      "twitter": "Twitter",
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "youtube": "YouTube"
+    }
+  },
+  "seo": {
+    "title": "AI Song Generator | Make AI Songs from Lyrics or Ideas Online – AIsongmaker.pro",
+    "description": "Create original AI songs online from your lyrics, moods, or ideas. Choose a voice, pick a style, and download full-length tracks in seconds. No experience needed.",
+    "keywords": "AI song generator, lyrics to music, generate music online, AI music maker, text to song, free music generator, AI Song Maker, AI Song Generator"
+  },
+  "language": {
+    "switch": "Switch Language",
+    "current": "Current Language",
+    "select": "Select Language"
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "heading": "404 - Page Not Found",
+    "description": "Sorry, the page you are looking for doesn't exist or has been moved.",
+    "suggestions": {
+      "title": "Here's what you can do:",
+      "checkUrl": "Check the URL for typos",
+      "goHome": "Go back to homepage",
+      "searchSite": "Search our site",
+      "contactUs": "Contact our support team"
+    },
+    "buttons": {
+      "home": "Back to Home",
+      "previous": "Go Back",
+      "search": "Search Site"
+    },
+    "popularPages": {
+      "title": "Popular Pages",
+      "generator": "AI Song Generator",
+      "generatorDesc": "Create AI songs instantly",
+      "examples": "Prompt Examples",
+      "examplesDesc": "Get inspired with examples",
+      "useCases": "Use Cases",
+      "useCasesDesc": "Discover use cases",
+      "blog": "Blog",
+      "blogDesc": "Read our latest posts"
+    },
+    "testNote": "This is a preview of the 404 page design. The actual 404 page configuration needs further debugging."
+  }
+}
