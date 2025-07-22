@@ -1,0 +1,176 @@
+{
+  "common": {
+    "loading": "加载中...",
+    "error": "错误",
+    "retry": "重试",
+    "close": "关闭",
+    "save": "保存",
+    "cancel": "取消",
+    "continue": "继续",
+    "back": "返回",
+    "next": "下一步",
+    "previous": "上一步",
+    "submit": "提交",
+    "search": "搜索",
+    "filter": "筛选",
+    "all": "全部",
+    "none": "无",
+    "select": "选择",
+    "download": "下载",
+    "upload": "上传",
+    "play": "播放",
+    "pause": "暂停",
+    "stop": "停止"
+  },
+  "navigation": {
+    "home": "首页",
+    "about": "关于我们",
+    "features": "功能特色",
+    "pricing": "价格",
+    "blog": "博客",
+    "contact": "联系我们",
+    "login": "登录",
+    "signup": "注册",
+    "dashboard": "控制台",
+    "profile": "个人资料",
+    "settings": "设置",
+    "logout": "退出登录"
+  },
+  "hero": {
+    "title": "AI歌曲生成器 | 在线将歌词或创意制作成AI歌曲",
+    "subtitle": "通过您的歌词、情绪或创意在线创作原创AI歌曲。选择声音，挑选风格，几秒钟内下载完整歌曲。无需任何经验。",
+    "cta": "立即创作歌曲",
+    "ctaSecondary": "观看演示",
+    "features": {
+      "instant": "即时创作",
+      "noExperience": "无需经验",
+      "fullLength": "完整歌曲",
+      "commercial": "商业使用"
+    }
+  },
+  "features": {
+    "title": "强大的AI音乐创作",
+    "subtitle": "创作专业品质歌曲所需的一切",
+    "list": {
+      "lyricsToMusic": {
+        "title": "歌词转音乐",
+        "description": "将您的歌词转化为完整的歌曲，包含AI生成的旋律和编曲"
+      },
+      "voiceSelection": {
+        "title": "声音选择",
+        "description": "从多种AI声音中选择，匹配您歌曲的风格和情绪"
+      },
+      "genreStyles": {
+        "title": "多种风格",
+        "description": "创作流行、摇滚、嘻哈、电子、爵士等多种风格的歌曲"
+      },
+      "instantDownload": {
+        "title": "即时下载",
+        "description": "立即以高质量格式下载您完成的歌曲"
+      },
+      "commercialUse": {
+        "title": "商业版权",
+        "description": "拥有完整版权，可将AI生成的歌曲用于商业用途"
+      },
+      "noExperience": {
+        "title": "新手友好",
+        "description": "无需音乐经验 - 只需输入您的想法，让AI完成其余工作"
+      }
+    }
+  },
+  "musicGenres": {
+    "title": "探索音乐风格",
+    "all": "全部",
+    "pop": "流行",
+    "rap": "说唱",
+    "lofi": "低保真",
+    "rock": "摇滚",
+    "electronic": "电子",
+    "jazz": "爵士",
+    "classical": "古典",
+    "country": "乡村",
+    "reggae": "雷鬼",
+    "blues": "蓝调",
+    "folk": "民谣",
+    "metal": "金属"
+  },
+  "audioPlayer": {
+    "play": "播放",
+    "pause": "暂停",
+    "stop": "停止",
+    "volume": "音量",
+    "mute": "静音",
+    "unmute": "取消静音",
+    "duration": "时长",
+    "currentTime": "当前时间",
+    "loading": "音频加载中...",
+    "error": "音频加载错误"
+  },
+  "prompts": {
+    "title": "歌曲创作提示",
+    "subtitle": "从这些示例提示中获得灵感",
+    "examples": {
+      "love": "创作一首关于寻找真爱的浪漫情歌",
+      "adventure": "写一首关于冒险的欢快歌曲",
+      "nostalgia": "创作一首关于童年回忆的怀旧歌曲",
+      "motivation": "生成一首关于克服挑战的励志歌曲",
+      "party": "制作一首充满活力的派对舞曲",
+      "peaceful": "创作一首平静、安详的放松歌曲"
+    }
+  },
+  "footer": {
+    "description": "从您的歌词和创意创作精彩的AI歌曲",
+    "links": {
+      "product": "产品",
+      "company": "公司",
+      "support": "支持",
+      "legal": "法律"
+    },
+    "copyright": "© 2024 AI歌曲制作器。保留所有权利。",
+    "social": {
+      "twitter": "推特",
+      "facebook": "脸书",
+      "instagram": "Instagram",
+      "youtube": "YouTube"
+    }
+  },
+  "seo": {
+    "title": "AI歌曲生成器 | 在线将歌词或创意制作成AI歌曲 – AIsongmaker.pro",
+    "description": "通过您的歌词、情绪或创意在线创作原创AI歌曲。选择声音，挑选风格，几秒钟内下载完整歌曲。无需任何经验。",
+    "keywords": "AI歌曲生成器, 歌词转音乐, 在线生成音乐, AI音乐制作器, 文本转歌曲, 免费音乐生成器, AI歌曲制作器, AI歌曲生成器"
+  },
+  "language": {
+    "switch": "切换语言",
+    "current": "当前语言",
+    "select": "选择语言"
+  },
+  "notFound": {
+    "title": "页面未找到",
+    "heading": "404 - 页面未找到",
+    "description": "抱歉，您要查找的页面不存在或已被移动。",
+    "suggestions": {
+      "title": "您可以尝试以下操作：",
+      "checkUrl": "检查URL是否有拼写错误",
+      "goHome": "返回主页",
+      "searchSite": "搜索我们的网站",
+      "contactUs": "联系我们的支持团队"
+    },
+    "buttons": {
+      "home": "返回主页",
+      "previous": "返回上一页",
+      "search": "搜索网站"
+    },
+    "popularPages": {
+      "title": "热门页面",
+      "generator": "AI歌曲生成器",
+      "generatorDesc": "即时创建AI歌曲",
+      "examples": "提示词示例",
+      "examplesDesc": "从示例中获取灵感",
+      "useCases": "使用案例",
+      "useCasesDesc": "探索使用场景",
+      "blog": "博客",
+      "blogDesc": "阅读我们的最新文章"
+    },
+    "testNote": "这是404页面设计的预览版本。实际的404页面配置还需要进一步调试。"
+  }
+}
