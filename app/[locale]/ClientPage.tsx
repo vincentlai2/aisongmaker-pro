@@ -101,71 +101,161 @@ export default function ClientPage() {
       <div className="min-h-screen bg-white">
         <Header />
 
-        {/* 1. Hero Section - 精确H1标题 */}
-        <section className="relative px-4 pb-20 pt-20">
-          <div className="max-w-4xl mx-auto text-center">
-            {/* 精确匹配meta title的H1 */}
-            <h1 className="font-bold text-gray-900 mb-6 leading-tight text-3xl">
+        {/* 1. Hero Section - 🎵 Music-themed with sound waves */}
+        <section className="relative px-4 pb-20 pt-20 overflow-hidden bg-gradient-studio">
+          {/* 🎵 Animated background elements */}
+          <div className="absolute inset-0 opacity-20">
+            {/* Sound wave bars */}
+            <div className="absolute top-1/2 left-1/4 transform -translate-y-1/2">
+              <div className="flex items-end space-x-1">
+                {[...Array(12)].map((_, i) => (
+                  <div
+                    key={i}
+                    className={`w-1 bg-gradient-sound-wave rounded-full animate-sound-wave`}
+                    style={{
+                      height: `${Math.random() * 60 + 20}px`,
+                      animationDelay: `${i * 0.1}s`
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Right side sound waves */}
+            <div className="absolute top-1/3 right-1/4 transform -translate-y-1/2">
+              <div className="flex items-end space-x-1">
+                {[...Array(8)].map((_, i) => (
+                  <div
+                    key={i}
+                    className={`w-1 bg-gradient-beat-pulse rounded-full animate-sound-wave-delay-1`}
+                    style={{
+                      height: `${Math.random() * 40 + 15}px`,
+                      animationDelay: `${i * 0.15}s`
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Floating music notes */}
+            <div className="absolute top-1/4 left-1/3 animate-float-melody">
+              <Music className="w-8 h-8 text-music-neon-cyan opacity-60" />
+            </div>
+            <div className="absolute top-3/4 right-1/3 animate-float-melody" style={{ animationDelay: '2s' }}>
+              <Volume2 className="w-6 h-6 text-music-neon-pink opacity-60" />
+            </div>
+            <div className="absolute top-1/2 left-1/6 animate-float-melody" style={{ animationDelay: '4s' }}>
+              <Headphones className="w-7 h-7 text-music-neon-green opacity-60" />
+            </div>
+          </div>
+
+          <div className="max-w-4xl mx-auto text-center relative z-10">
+            {/* 🎵 Enhanced H1 with neon glow effect */}
+            <h1 className="font-bold text-white mb-6 leading-tight text-3xl md:text-4xl lg:text-5xl">
               AI Song Generator - Make Songs from Your{" "}
-              <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-neon-glow bg-clip-text text-transparent animate-glow-neon relative">
                 Lyrics or Ideas
+                <div className="absolute inset-0 bg-gradient-neon-glow bg-clip-text text-transparent blur-sm opacity-50 animate-pulse"></div>
               </span>{" "}
             </h1>
 
-            {/* Subtitle */}
-            <p className="text-gray-600 mb-12 max-w-3xl mx-auto text-lg">
-              Create original AI songs online from your lyrics, moods, or ideas. Choose a voice, pick a style, and
-              download full-length tracks in seconds.
+            {/* Enhanced Subtitle with music theme */}
+            <p className="text-gray-300 mb-12 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed">
+              🎵 Create original AI songs online from your lyrics, moods, or ideas. Choose a voice, pick a style, and
+              download full-length tracks in seconds. <span className="text-music-neon-cyan">Let the music flow!</span>
             </p>
 
-            {/* Upload Interface */}
+            {/* 🎵 Enhanced Upload Interface with music theme */}
             <div className="max-w-2xl mx-auto">
               <div className="mb-6">
-                {/* Upload Area */}
-                <div className="border-2 border-dashed border-gray-300 rounded-2xl p-12 hover:border-purple-400 transition-all duration-300 bg-gray-50/50 hover:bg-purple-50/30 hover:scale-105 transform">
-                  <div className="flex flex-col items-center">
-                    <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center mb-4 hover:scale-110 transition-transform duration-300">
-                      <Upload className="w-8 h-8 text-white" />
+                {/* Music-themed Upload Area */}
+                <div className="relative border-2 border-dashed border-music-wave-300 rounded-2xl p-12 hover:border-music-neon-cyan transition-all duration-500 bg-gradient-to-br from-gray-900/50 to-music-bass-900/30 hover:from-music-bass-900/40 hover:to-music-wave-900/40 hover:scale-105 transform backdrop-blur-sm">
+                  {/* Animated border glow */}
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-neon-glow opacity-0 hover:opacity-20 transition-opacity duration-500 blur-sm"></div>
+
+                  <div className="flex flex-col items-center relative z-10">
+                    {/* Enhanced upload icon with sound wave animation */}
+                    <div className="relative w-20 h-20 mb-6">
+                      <div className="w-20 h-20 bg-gradient-sound-wave rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 animate-pulse-beat shadow-lg shadow-music-wave-500/50">
+                        <Upload className="w-10 h-10 text-white" />
+                      </div>
+                      {/* Orbiting music notes */}
+                      <div className="absolute -top-2 -right-2 animate-float-melody">
+                        <Music className="w-4 h-4 text-music-neon-pink" />
+                      </div>
+                      <div className="absolute -bottom-2 -left-2 animate-float-melody" style={{ animationDelay: '1s' }}>
+                        <Volume2 className="w-4 h-4 text-music-neon-green" />
+                      </div>
                     </div>
-                    <p className="text-gray-600 mb-2">Type your lyrics or describe your song idea</p>
-                    <button className="text-purple-600 hover:text-purple-700 underline text-sm hover:scale-105 transition-transform duration-300">
-                      Choose Text File
+
+                    <p className="text-gray-200 mb-3 text-lg font-medium">🎤 Type your lyrics or describe your song idea</p>
+                    <p className="text-music-wave-300 mb-4 text-sm">Transform words into melodies with AI magic</p>
+
+                    <button className="text-music-neon-cyan hover:text-music-neon-pink underline text-sm hover:scale-105 transition-all duration-300 font-medium animate-glow-neon">
+                      📁 Choose Text File
                     </button>
                   </div>
                 </div>
 
-                <p className="text-sm text-gray-500 mt-3">Supports all text formats, max 2000 characters</p>
+                <p className="text-sm text-gray-400 mt-3 text-center">
+                  🎵 Supports all text formats • Max 2000 characters •
+                  <span className="text-music-neon-green"> Let your creativity flow!</span>
+                </p>
               </div>
 
-              {/* Generate Button with anchor links */}
-              <div className="space-y-4">
-                <Button
-                  size="lg"
-                  className="w-full max-w-md bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-4 text-lg font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 transform"
-                >
-                  <Sparkles className="w-5 h-5 mr-2" />
-                  Generate Your Songs
-                </Button>
+              {/* 🎵 Enhanced Generate Button with music effects */}
+              <div className="space-y-6">
+                <div className="relative">
+                  <Button
+                    size="lg"
+                    className="w-full max-w-md bg-gradient-neon-glow hover:bg-gradient-spectrum text-white px-8 py-4 text-lg font-bold rounded-2xl shadow-2xl shadow-music-neon-cyan/30 hover:shadow-music-neon-pink/50 transition-all duration-500 hover:scale-110 transform animate-glow-neon relative overflow-hidden"
+                  >
+                    {/* Animated background */}
+                    <div className="absolute inset-0 bg-gradient-spectrum opacity-0 hover:opacity-100 transition-opacity duration-500 animate-spectrum-shift"></div>
 
-                <div className="flex gap-4 justify-center">
+                    <div className="relative z-10 flex items-center justify-center">
+                      <Sparkles className="w-6 h-6 mr-3 animate-pulse" />
+                      🎵 Generate Your Songs
+                      <Waveform className="w-6 h-6 ml-3 animate-sound-wave" />
+                    </div>
+                  </Button>
+
+                  {/* Pulsing rings around button */}
+                  <div className="absolute inset-0 rounded-2xl border-2 border-music-neon-cyan opacity-50 animate-ping"></div>
+                  <div className="absolute inset-0 rounded-2xl border border-music-neon-pink opacity-30 animate-pulse"></div>
+                </div>
+
+                <div className="flex gap-4 justify-center flex-wrap">
                   <Button
                     variant="outline"
                     onClick={() => scrollToSection("demo")}
-                    className="text-purple-600 border-purple-200 hover:bg-purple-50 hover:scale-105 transition-all duration-300"
+                    className="text-music-neon-cyan border-music-wave-400 hover:bg-music-wave-900/50 hover:border-music-neon-cyan hover:text-white hover:scale-105 transition-all duration-300 backdrop-blur-sm font-medium"
                   >
-                    Listen to Demo
+                    <Play className="w-4 h-4 mr-2" />
+                    🎧 Listen to Demo
                   </Button>
                   <Button
                     variant="outline"
                     onClick={() => scrollToSection("pricing")}
-                    className="text-purple-600 border-purple-200 hover:bg-purple-50 hover:scale-105 transition-all duration-300"
+                    className="text-music-neon-pink border-music-beat-400 hover:bg-music-beat-900/50 hover:border-music-neon-pink hover:text-white hover:scale-105 transition-all duration-300 backdrop-blur-sm font-medium"
                   >
-                    View Pricing
+                    <Star className="w-4 h-4 mr-2" />
+                    💎 View Pricing
                   </Button>
                 </div>
               </div>
 
-              <p className="text-sm text-gray-500 mt-4">3 free generations daily</p>
+              <div className="mt-6 text-center">
+                <p className="text-sm text-gray-400">
+                  🎁 <span className="text-music-neon-green font-medium">3 free generations daily</span> •
+                  <span className="text-music-neon-yellow"> No credit card required</span>
+                </p>
+                <div className="flex justify-center mt-2 space-x-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-3 h-3 text-music-neon-yellow animate-pulse" style={{ animationDelay: `${i * 0.2}s` }} />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </section>
