@@ -16,9 +16,14 @@ export function generateMetadata({
   title = "AI Song Generator | Make AI Songs from Lyrics or Ideas Online – AIsongmaker.pro",
   description = "Create original AI songs online from your lyrics, moods, or ideas. Choose a voice, pick a style, and download full-length tracks in seconds. No experience needed.",
   keywords = "AI song generator, lyrics to music, generate music online, AI music maker, text to song, free music generator, AI Song Maker, AI Song Generator",
-  canonicalUrl = "https://aisongmaker.pro",
+  canonicalUrl,
   ogImage = "https://aisongmaker.pro/og-image.jpg",
+  locale = "en",
+  pathname = "",
 }: SEOHeadProps = {}): Metadata {
+  // Auto-generate canonical URL if not provided
+  const baseUrl = "https://aisongmaker.pro"
+  const finalCanonicalUrl = canonicalUrl || (locale === "en" ? `${baseUrl}${pathname}` : `${baseUrl}/${locale}${pathname}`)
   return {
     title,
     description,
@@ -40,7 +45,7 @@ export function generateMetadata({
     openGraph: {
       type: "website",
       locale: "en_US",
-      url: canonicalUrl,
+      url: finalCanonicalUrl,
       title,
       description,
       siteName: "AI Song Maker",
@@ -68,12 +73,8 @@ export function generateMetadata({
       site: "@aisongmaker",
     },
     alternates: {
-      canonical: canonicalUrl,
-      languages: {
-        "en-US": canonicalUrl,
-        "es-ES": `${canonicalUrl}/es`,
-        "zh-CN": `${canonicalUrl}/zh`,
-      },
+      canonical: finalCanonicalUrl,
+      languages: generateAlternateUrls("https://aisongmaker.pro", pathname),
     },
     verification: {
       google: "aisongmaker-google-site-verification",

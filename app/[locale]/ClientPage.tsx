@@ -1,10 +1,13 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Header } from "@/components/header"
 import { EnhancedStructuredData } from "@/components/enhanced-structured-data"
+
+// Import components normally to avoid module resolution issues
 import { EnhancedAudioPlayer } from "@/components/enhanced-audio-player"
 import { EnhancedPromptCard } from "@/components/enhanced-prompt-card"
 import { SongFilter } from "@/components/song-filter"
@@ -124,15 +127,15 @@ export default function ClientPage() {
       <div className="min-h-screen bg-white">
         <Header />
 
-        {/* 1. Hero Section - Modern Suno-inspired layout */}
-        <section className="relative px-4 pb-16 pt-16 sm:pb-20 sm:pt-20 bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50">
+        {/* 1. Hero Section - Modern Suno-inspired layout with gradient */}
+        <section className="relative px-4 pb-16 pt-16 sm:pb-20 sm:pt-20 bg-gradient-to-br from-purple-50/50 via-blue-50/40 to-indigo-50/50">
           <div className="max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               {/* Left side - Content */}
               <div className="text-center lg:text-left">
                 <h1 className="font-bold text-gray-900 mb-6 leading-tight text-3xl sm:text-4xl lg:text-5xl">
                   Free AI Song{" "}
-                  <span className="bg-gradient-to-r from-purple-600 to-purple-500 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
                     Generator
                   </span>
                 </h1>
@@ -168,27 +171,24 @@ export default function ClientPage() {
                   <div className="text-center mb-6">
                     <h3 className="text-xl font-semibold text-gray-900 mb-2">AI Music Generator</h3>
                     <div className="flex items-center justify-center gap-2 text-sm text-gray-500">
-                      <span className="bg-purple-100 text-purple-700 px-2 py-1 rounded-full text-xs font-medium">v4</span>
+                      <span className="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs font-medium">v4</span>
                       <span>•</span>
                       <span>Maximum: 4 Minutes</span>
                     </div>
                   </div>
 
                   {/* Mode Selection */}
-                  <div className="flex gap-1 mb-6 bg-gray-100 p-1 rounded-lg">
-                    <button className="flex-1 bg-purple-600 text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 shadow-sm hover:bg-purple-700">
+                  <div className="flex gap-2 mb-6 justify-center">
+                    <button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 shadow-sm">
                       <Sparkles className="w-4 h-4 inline mr-1" />
-                      <span className="hidden sm:inline">Simple</span>
-                      <span className="sm:hidden">Simple</span>
+                      Simple
                     </button>
-                    <button className="flex-1 bg-transparent text-gray-600 px-3 py-2 rounded-md text-sm font-medium hover:bg-white hover:shadow-sm transition-all duration-200">
-                      <span className="hidden sm:inline">Custom</span>
-                      <span className="sm:hidden">Custom</span>
+                    <button className="bg-gray-100 text-gray-600 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-200 transition-all duration-200">
+                      Custom
                     </button>
-                    <button className="flex-1 bg-transparent text-gray-600 px-3 py-2 rounded-md text-sm font-medium hover:bg-white hover:shadow-sm transition-all duration-200">
+                    <button className="bg-gray-100 text-gray-600 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-200 transition-all duration-200">
                       <Music className="w-4 h-4 inline mr-1" />
-                      <span className="hidden sm:inline">Instrumental</span>
-                      <span className="sm:hidden">Inst.</span>
+                      Instrumental
                     </button>
                   </div>
 
@@ -228,7 +228,7 @@ export default function ClientPage() {
                     <span className="text-sm font-medium text-gray-700">Display Public</span>
                     <div className="relative">
                       <input type="checkbox" className="sr-only" />
-                      <div className="w-10 h-6 bg-purple-500 rounded-full shadow-inner"></div>
+                      <div className="w-10 h-6 bg-blue-500 rounded-full shadow-inner"></div>
                       <div className="absolute w-4 h-4 bg-white rounded-full shadow top-1 right-1 transition-transform"></div>
                     </div>
                   </div>
@@ -241,8 +241,8 @@ export default function ClientPage() {
                       disabled={isGenerating}
                       className={`w-fit px-8 py-3 text-base font-semibold rounded-xl transition-all duration-300 ${
                         isGenerating
-                          ? "bg-gradient-to-r from-purple-400 to-purple-300 cursor-wait opacity-80"
-                          : "bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-700 hover:to-purple-600 text-white shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98]"
+                          ? "bg-gradient-to-r from-purple-400 to-blue-400 cursor-wait opacity-80"
+                          : "bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98]"
                       } text-white`}
                     >
                     {isGenerating ? (
@@ -381,25 +381,25 @@ export default function ClientPage() {
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">How It Works</h2>
             <div className="grid md:grid-cols-3 gap-8">
               <div className="text-center relative">
-                <div className="w-20 h-20 bg-gradient-to-r from-purple-600 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg hover:scale-110 transition-transform duration-300">
+                <div className="w-20 h-20 bg-gradient-to-r from-purple-500 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg hover:scale-110 transition-transform duration-300">
                   <Upload className="w-10 h-10 text-white" />
                 </div>
                 <h3 className="text-xl font-semibold mb-4">Write your lyrics or describe your theme</h3>
                 <p className="text-gray-600">
                   Input your creative ideas, lyrics, or describe the mood and style you want
                 </p>
-                <div className="hidden md:block absolute top-10 left-full w-8 h-0.5 bg-gradient-to-r from-purple-600 to-purple-500 transform -translate-y-1/2"></div>
+                <div className="hidden md:block absolute top-10 left-full w-8 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 transform -translate-y-1/2"></div>
               </div>
               <div className="text-center relative">
-                <div className="w-20 h-20 bg-gradient-to-r from-purple-500 to-purple-400 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg hover:scale-110 transition-transform duration-300">
+                <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg hover:scale-110 transition-transform duration-300">
                   <Mic className="w-10 h-10 text-white" />
                 </div>
                 <h3 className="text-xl font-semibold mb-4">Choose a voice style and genre</h3>
                 <p className="text-gray-600">Select from our wide range of voice styles and musical genres</p>
-                <div className="hidden md:block absolute top-10 left-full w-8 h-0.5 bg-gradient-to-r from-purple-500 to-purple-400 transform -translate-y-1/2"></div>
+                <div className="hidden md:block absolute top-10 left-full w-8 h-0.5 bg-gradient-to-r from-blue-500 to-indigo-500 transform -translate-y-1/2"></div>
               </div>
               <div className="text-center">
-                <div className="w-20 h-20 bg-gradient-to-r from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg hover:scale-110 transition-transform duration-300">
+                <div className="w-20 h-20 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg hover:scale-110 transition-transform duration-300">
                   <Download className="w-10 h-10 text-white" />
                 </div>
                 <h3 className="text-xl font-semibold mb-4">Generate and download your song</h3>
@@ -424,11 +424,14 @@ export default function ClientPage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
               <Card className="border-0 shadow-sm hover:shadow-lg transition-all duration-300 bg-white hover:scale-105 transform">
                 <CardContent className="p-6">
-                  <div className="relative mb-4">
-                    <img
+                  <div className="relative mb-4 h-48">
+                    <Image
                       src="/images/music-cover-1.png"
                       alt="AI Song Maker generated City Lights track"
-                      className="w-full h-48 object-cover rounded-lg"
+                      fill
+                      className="object-cover rounded-lg"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      priority={false}
                     />
                   </div>
                   <h3 className="font-semibold text-lg mb-2">"City Lights"</h3>
@@ -443,11 +446,14 @@ export default function ClientPage() {
 
               <Card className="border-0 shadow-sm hover:shadow-lg transition-all duration-300 bg-white hover:scale-105 transform">
                 <CardContent className="p-6">
-                  <div className="relative mb-4">
-                    <img
+                  <div className="relative mb-4 h-48">
+                    <Image
                       src="/images/music-cover-2.png"
                       alt="AI Song Generator created Echoes of Time"
-                      className="w-full h-48 object-cover rounded-lg"
+                      fill
+                      className="object-cover rounded-lg"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      priority={false}
                     />
                   </div>
                   <h3 className="font-semibold text-lg mb-2">"Echoes of Time"</h3>
@@ -462,11 +468,14 @@ export default function ClientPage() {
 
               <Card className="border-0 shadow-sm hover:shadow-lg transition-all duration-300 bg-white hover:scale-105 transform">
                 <CardContent className="p-6">
-                  <div className="relative mb-4">
-                    <img
+                  <div className="relative mb-4 h-48">
+                    <Image
                       src="/images/music-cover-3.png"
                       alt="Loop 808 made with AI Song Maker"
-                      className="w-full h-48 object-cover rounded-lg"
+                      fill
+                      className="object-cover rounded-lg"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      priority={false}
                     />
                   </div>
                   <h3 className="font-semibold text-lg mb-2">"Loop 808"</h3>
@@ -481,11 +490,14 @@ export default function ClientPage() {
 
               <Card className="border-0 shadow-sm hover:shadow-lg transition-all duration-300 bg-white hover:scale-105 transform">
                 <CardContent className="p-6">
-                  <div className="relative mb-4">
-                    <img
+                  <div className="relative mb-4 h-48">
+                    <Image
                       src="/images/music-cover-4.png"
                       alt="Smile Again - AI Song Generator demo"
-                      className="w-full h-48 object-cover rounded-lg"
+                      fill
+                      className="object-cover rounded-lg"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      priority={false}
                     />
                   </div>
                   <h3 className="font-semibold text-lg mb-2">"Smile Again"</h3>
@@ -694,12 +706,12 @@ export default function ClientPage() {
 
               <Card className="border-2 border-purple-500 relative hover:shadow-xl transition-all duration-300 hover:scale-105 transform">
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-gradient-to-r from-purple-600 to-purple-500 text-white px-4 py-1 rounded-full text-sm font-medium shadow-md">
+                  <span className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-1 rounded-full text-sm font-medium">
                     Most Popular
                   </span>
                 </div>
                 <CardContent className="p-8">
-                  <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                  <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
                     <Star className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="text-2xl font-bold mb-4">Pro Plan</h3>
@@ -727,7 +739,7 @@ export default function ClientPage() {
                     </li>
                   </ul>
                   <div className="space-y-3">
-                    <Button className="w-full bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-700 hover:to-purple-600 transition-all duration-300 shadow-lg hover:shadow-xl">
+                    <Button className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700">
                       Upgrade to Pro
                     </Button>
                     <Button
@@ -1143,7 +1155,7 @@ export default function ClientPage() {
         {/* 12. Technology Behind It */}
         <section className="py-16 px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="w-20 h-20 bg-gradient-to-r from-purple-600 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-lg">
+            <div className="w-20 h-20 bg-gradient-to-r from-purple-500 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-8">
               <Zap className="w-10 h-10 text-white" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900 mb-6">The Technology Behind AI Song Maker</h2>
