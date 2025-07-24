@@ -435,7 +435,11 @@ export default function PromptExamplesClient() {
             <p className="text-xl mb-8 opacity-90">
               Use any of these prompts with AI Song Maker and bring your musical ideas to life.
             </p>
-            <Link href="/">
+            <Link
+              href="https://www.udio.com/song-builder"
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+            >
               <Button
                 size="lg"
                 className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold rounded-2xl"

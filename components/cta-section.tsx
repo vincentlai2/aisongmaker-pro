@@ -36,7 +36,11 @@ export function CTASection({
             {subtitle}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href={primaryHref}>
+            <Link
+              href={primaryHref}
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+            >
               <Button
                 size="lg"
                 className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-4 text-lg font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all hover:scale-105 transform"
@@ -75,7 +79,11 @@ export function CTASection({
           {subtitle}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link href={primaryHref}>
+          <Link
+            href={primaryHref}
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+          >
             <Button
               size="lg"
               className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all hover:scale-105 transform"
@@ -109,8 +117,8 @@ export function HomeCTA() {
       title="Create Your First Song Now"
       subtitle="No sign-up required. Just enter your idea and hear it come to life."
       primaryText="Start Generating"
-      primaryHref="/"
-      secondaryText="Listen to Demos"  
+      primaryHref="https://www.udio.com/song-builder"
+      secondaryText="Listen to Demos"
       secondaryHref="#demo"
       icon={<Sparkles className="w-20 h-20" />}
     />
@@ -123,7 +131,7 @@ export function UseCasesCTA() {
       title="Ready to Join Thousands of Creators?"
       subtitle="Start creating professional-quality music for your projects today."
       primaryText="Start Creating Now"
-      primaryHref="/"
+      primaryHref="https://www.udio.com/song-builder"
       secondaryText="Browse Prompt Examples"
       secondaryHref="/prompt-examples"
       icon={<Sparkles className="w-16 h-16" />}

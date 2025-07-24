@@ -5,7 +5,8 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Header } from "@/components/header"
-import { EnhancedStructuredData } from "@/components/enhanced-structured-data"
+
+// Import components normally to avoid module resolution issues
 import { EnhancedAudioPlayer } from "@/components/enhanced-audio-player"
 import { EnhancedPromptCard } from "@/components/enhanced-prompt-card"
 import { SongFilter } from "@/components/song-filter"
@@ -47,9 +48,7 @@ import {
 
 export default function ClientPage() {
   const [activeFilter, setActiveFilter] = useState("All")
-  const [lyricsInput, setLyricsInput] = useState("")
-  const [isGenerating, setIsGenerating] = useState(false)
-  const [uploadHover, setUploadHover] = useState(false)
+  const [lyrics, setLyrics] = useState("")
 
   const songCategories = ["All", "Pop", "Rap", "Lo-fi", "Rock", "Electronic"]
 
@@ -99,128 +98,174 @@ export default function ClientPage() {
     }
   }
 
+  const handleGenerate = () => {
+    // Redirect to Udio with the lyrics as a parameter (if any)
+    const encodedLyrics = lyrics.trim() ? encodeURIComponent(lyrics.trim()) : ''
+    const url = encodedLyrics
+      ? `https://www.udio.com/song-builder?prompt=${encodedLyrics}`
+      : 'https://www.udio.com/song-builder'
+
+    window.open(url, '_blank', 'noopener,noreferrer')
+  }
+
+  // Handle keyboard shortcuts
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+      e.preventDefault()
+      handleGenerate()
+    }
+  }
+
   return (
     <>
-      <EnhancedStructuredData />
       <div className="min-h-screen bg-white">
         <Header />
 
-        {/* 1. Hero Section - 精确H1标题 */}
-        <section className="relative px-4 pb-20 pt-20">
-          <div className="max-w-4xl mx-auto text-center">
-            {/* 精确匹配meta title的H1 */}
-            <h1 className="font-bold text-gray-900 mb-6 leading-tight text-3xl">
-              AI Song Generator - Make Songs from Your{" "}
-              <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-                Lyrics or Ideas
-              </span>{" "}
-            </h1>
+        {/* 1. Hero Section - Modern Suno-inspired layout with gradient */}
+        <section className="relative px-4 pb-16 pt-16 sm:pb-20 sm:pt-20 bg-gradient-to-br from-purple-50/50 via-blue-50/40 to-indigo-50/50">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              {/* Left side - Content */}
+              <div className="text-center lg:text-left">
+                <h1 className="font-bold text-gray-900 mb-6 leading-tight text-3xl sm:text-4xl lg:text-5xl">
+                  Free AI Song{" "}
+                  <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                    Generator
+                  </span>
+                </h1>
 
-            {/* Subtitle */}
-            <p className="text-gray-600 mb-12 max-w-3xl mx-auto text-lg">
-              Create original AI songs online from your lyrics, moods, or ideas. Choose a voice, pick a style, and
-              download full-length tracks in seconds.
-            </p>
+                <p className="text-gray-600 mb-8 text-lg sm:text-xl leading-relaxed">
+                  Create unique, professional-quality music in seconds with AI Song Generator. No musical experience required.
+                </p>
 
-            {/* Upload Interface */}
-            <div className="max-w-2xl mx-auto">
-              <div className="mb-6">
-                {/* Upload Area */}
-                <div 
-                  className={`border-2 border-dashed rounded-2xl p-12 transition-all duration-300 transform hover:scale-105 ${
-                    uploadHover 
-                      ? 'border-purple-400 bg-purple-50/50' 
-                      : 'border-gray-300 bg-gray-50/50'
-                  } hover:border-purple-400 hover:bg-purple-50/30`}
-                  onMouseEnter={() => setUploadHover(true)}
-                  onMouseLeave={() => setUploadHover(false)}
-                >
-                  <div className="flex flex-col items-center">
-                    <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center mb-4 hover:scale-110 transition-transform duration-300">
-                      <Upload className="w-8 h-8 text-white" />
+                {/* Features */}
+                <div className="space-y-3 mb-8">
+                  <div className="flex items-center justify-center lg:justify-start gap-3">
+                    <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
+                      <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
                     </div>
-                    <div className="w-full max-w-lg mx-auto">
-                      <textarea
-                        className="w-full h-32 p-4 border border-gray-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm"
-                        placeholder="Type your lyrics or describe your song idea...\ne.g. 'A soft piano ballad about long-distance love with gentle vocals'"
-                        value={lyricsInput}
-                        onChange={(e) => setLyricsInput(e.target.value)}
-                        maxLength={2000}
-                      />
-                      <div className="flex justify-between items-center mt-2">
-                        <button className="text-purple-600 hover:text-purple-700 underline text-sm hover:scale-105 transition-transform duration-300">
-                          Choose Text File
-                        </button>
-                        <span className="text-xs text-gray-500">
-                          {lyricsInput.length}/2000
-                        </span>
+                    <span className="text-gray-700">3 Free Credits • No credit card required</span>
+                  </div>
+                  <div className="flex items-center justify-center lg:justify-start gap-3">
+                    <div className="w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center">
+                      <Clock className="w-3 h-3 text-white" />
+                    </div>
+                    <span className="text-gray-700">Generate music in 1 minute</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right side - Generator Card */}
+              <div className="w-full max-w-md mx-auto lg:max-w-none">
+
+                <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-6 sm:p-8">
+                  {/* Header */}
+                  <div className="text-center mb-6">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2">AI Music Generator</h3>
+                    <div className="flex items-center justify-center gap-2 text-sm text-gray-500">
+                      <span className="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs font-medium">v4</span>
+                      <span>•</span>
+                      <span>Maximum: 4 Minutes</span>
+                    </div>
+                  </div>
+
+                  {/* Mode Selection */}
+                  <div className="flex gap-2 mb-6 justify-center">
+                    <button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 shadow-sm">
+                      <Sparkles className="w-4 h-4 inline mr-1" />
+                      Simple
+                    </button>
+                    <button className="bg-gray-100 text-gray-600 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-200 transition-all duration-200">
+                      Custom
+                    </button>
+                    <button className="bg-gray-100 text-gray-600 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-200 transition-all duration-200">
+                      <Music className="w-4 h-4 inline mr-1" />
+                      Instrumental
+                    </button>
+                  </div>
+
+                  {/* Creative Text Input */}
+                  <div className="mb-6">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Creative Text</label>
+                    <textarea
+                      value={lyrics}
+                      onChange={(e) => setLyrics(e.target.value)}
+                      onKeyDown={handleKeyDown}
+                      placeholder="Examples:
+• A love song about missing someone
+• Upbeat rap about overcoming challenges
+• Chill lo-fi instrumental for studying
+• Happy birthday song with party vibes"
+                      className="w-full h-32 p-3 border border-gray-300 rounded-lg resize-none focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all duration-300 text-sm placeholder-gray-400"
+                      maxLength={2000}
+                    />
+                    <div className="flex justify-between items-center mt-2">
+                      <div className={`text-xs transition-colors ${
+                        lyrics.length === 0 ? "text-gray-400" :
+                        lyrics.length > 0 ? "text-green-500" :
+                        "text-gray-400"
+                      }`}>
+                        {lyrics.length === 0 ? (
+                          "💡 Describe your song idea or paste lyrics"
+                        ) : (
+                          "✨ Perfect! Ready to create your song"
+                        )}
                       </div>
+                      <span className="text-xs text-gray-400">{lyrics.length}/2000</span>
+                    </div>
+                  </div>
+
+                  {/* Display Public Toggle */}
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="text-sm font-medium text-gray-700">Display Public</span>
+                    <div className="relative">
+                      <input type="checkbox" className="sr-only" />
+                      <div className="w-10 h-6 bg-blue-500 rounded-full shadow-inner"></div>
+                      <div className="absolute w-4 h-4 bg-white rounded-full shadow top-1 right-1 transition-transform"></div>
+                    </div>
+                  </div>
+
+                  {/* Generate Button */}
+                  <div className="flex justify-center">
+                    <Button
+                      size="lg"
+                      onClick={handleGenerate}
+                      className="w-fit px-8 py-3 text-base font-semibold rounded-xl transition-all duration-300 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98]"
+                    >
+                      <Sparkles className="w-4 h-4 mr-2" />
+                      Generate Music
+                    </Button>
+                  </div>
+
+                  {/* Bottom Actions */}
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-4 text-sm">
+                    <div className="flex items-center gap-2 text-gray-500">
+                      <Shield className="w-4 h-4 text-green-500" />
+                      <span>Secure & Private</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-gray-500">
+                      <Download className="w-4 h-4 text-blue-500" />
+                      <span>Instant Download</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-gray-500">
+                      <Clock className="w-4 h-4 text-purple-500" />
+                      <span>~30 seconds</span>
                     </div>
                   </div>
                 </div>
-
-                <p className="text-sm text-gray-500 mt-3">Supports all text formats, max 2000 characters</p>
               </div>
-
-              {/* Generate Button with anchor links */}
-              <div className="space-y-4">
-                <Button
-                  size="lg"
-                  disabled={!lyricsInput.trim() || isGenerating}
-                  onClick={() => {
-                    if (lyricsInput.trim()) {
-                      setIsGenerating(true)
-                      // Simulate generation process
-                      setTimeout(() => {
-                        setIsGenerating(false)
-                        alert('Demo: Song generation would start here!')
-                      }, 2000)
-                    }
-                  }}
-                  className="w-full max-w-md bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-4 text-lg font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 transform disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
-                >
-                  {isGenerating ? (
-                    <>
-                      <div className="w-5 h-5 mr-2 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                      Generating...
-                    </>
-                  ) : (
-                    <>
-                      <Sparkles className="w-5 h-5 mr-2" />
-                      Generate Your Songs
-                    </>
-                  )}
-                </Button>
-
-                <div className="flex gap-4 justify-center">
-                  <Button
-                    variant="outline"
-                    onClick={() => scrollToSection("demo")}
-                    className="text-purple-600 border-purple-200 hover:bg-purple-50 hover:scale-105 transition-all duration-300"
-                  >
-                    Listen to Demo
-                  </Button>
-                  <Button
-                    variant="outline"
-                    onClick={() => scrollToSection("pricing")}
-                    className="text-purple-600 border-purple-200 hover:bg-purple-50 hover:scale-105 transition-all duration-300"
-                  >
-                    View Pricing
-                  </Button>
-                </div>
-              </div>
-
-              <p className="text-sm text-gray-500 mt-4">3 free generations daily</p>
             </div>
           </div>
         </section>
 
         {/* 2. What is AI Song Maker */}
-        <section className="py-16 px-4">
+        <section className="py-12 sm:py-16 px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">What Is AI Song Maker?</h2>
-            <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              AI Song Maker turns any lyric or idea into a fully arranged song. Our AI composes melody, applies voice,
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">What Is AI Song Maker 2025?</h2>
+            <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
+              AI Song Maker 2025 turns any lyric or idea into a fully arranged song. Our AI composes melody, applies voice,
               and generates downloadable audio—within seconds.
             </p>
           </div>
@@ -230,82 +275,81 @@ export default function ClientPage() {
         <section className="py-16 px-4 bg-gradient-to-br from-gray-50 to-purple-50/30">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Everything you need with AI Song Maker</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Everything you need with AI Song Maker 2025</h2>
               <p className="text-gray-600">Powerful features designed for creators of all levels</p>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <Card className="border-0 shadow-sm hover:shadow-lg transition-all duration-300 bg-white/80 backdrop-blur-sm hover:scale-105 transform">
-                <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <Clock className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="font-semibold mb-2">Lightning Fast</h3>
-                  <p className="text-sm text-gray-600">Generate songs in under 30 seconds</p>
-                </CardContent>
-              </Card>
-              <Card className="border-0 shadow-sm hover:shadow-lg transition-all duration-300 bg-white/80 backdrop-blur-sm hover:scale-105 transform">
-                <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <Mic className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="font-semibold mb-2">Voice Styles</h3>
-                  <p className="text-sm text-gray-600">Pick from various voice styles and genres</p>
-                </CardContent>
-              </Card>
-              <Card className="border-0 shadow-sm hover:shadow-lg transition-all duration-300 bg-white/80 backdrop-blur-sm hover:scale-105 transform">
-                <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <Copyright className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="font-semibold mb-2">Royalty-Free</h3>
-                  <p className="text-sm text-gray-600">Full commercial rights included</p>
-                </CardContent>
-              </Card>
-              <Card className="border-0 shadow-sm hover:shadow-lg transition-all duration-300 bg-white/80 backdrop-blur-sm hover:scale-105 transform">
-                <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <Zap className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="font-semibold mb-2">Beginner Friendly</h3>
-                  <p className="text-sm text-gray-600">No music production experience required</p>
-                </CardContent>
-              </Card>
-              <Card className="border-0 shadow-sm hover:shadow-lg transition-all duration-300 bg-white/80 backdrop-blur-sm hover:scale-105 transform">
-                <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <Globe className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="font-semibold mb-2">Multi-Language</h3>
-                  <p className="text-sm text-gray-600">Support for multiple languages</p>
-                </CardContent>
-              </Card>
-              <Card className="border-0 shadow-sm hover:shadow-lg transition-all duration-300 bg-white/80 backdrop-blur-sm hover:scale-105 transform">
-                <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-teal-500 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <Download className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="font-semibold mb-2">HD Downloads</h3>
-                  <p className="text-sm text-gray-600">MP3 and WAV downloads available</p>
-                </CardContent>
-              </Card>
-              <Card className="border-0 shadow-sm hover:shadow-lg transition-all duration-300 bg-white/80 backdrop-blur-sm hover:scale-105 transform">
-                <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-rose-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <Palette className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="font-semibold mb-2">All Genres</h3>
-                  <p className="text-sm text-gray-600">Pop, rap, lo-fi, and more styles</p>
-                </CardContent>
-              </Card>
-              <Card className="border-0 shadow-sm hover:shadow-lg transition-all duration-300 bg-white/80 backdrop-blur-sm hover:scale-105 transform">
-                <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-violet-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <Shield className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="font-semibold mb-2">Copyright Free</h3>
-                  <p className="text-sm text-gray-600">Unique AI-generated content</p>
-                </CardContent>
-              </Card>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+              {/* Free AI Music Generator */}
+              <div className="text-center group">
+                <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-purple-200 transition-all duration-300">
+                  <Music className="w-8 h-8 text-purple-600" />
+                </div>
+                <h3 className="text-lg font-semibold mb-2 text-gray-900">Free AI Music Generator</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">Generate AI music for free with AI Song Maker. No credit card required, start creating instantly.</p>
+              </div>
+
+              {/* Copyright-Free Music */}
+              <div className="text-center group">
+                <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-purple-200 transition-all duration-300">
+                  <Shield className="w-8 h-8 text-purple-600" />
+                </div>
+                <h3 className="text-lg font-semibold mb-2 text-gray-900">Copyright-Free Music</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">All music created with our AI Music Generator is 100% copyright-free and ready for commercial use.</p>
+              </div>
+
+              {/* Lightning-Fast Generation */}
+              <div className="text-center group">
+                <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-green-200 transition-all duration-300">
+                  <Clock className="w-8 h-8 text-green-600" />
+                </div>
+                <h3 className="text-lg font-semibold mb-2 text-gray-900">Lightning-Fast Generation</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">AI Song Maker creates professional-quality tracks in minutes, not hours or days.</p>
+              </div>
+
+              {/* Studio-Quality Sound */}
+              <div className="text-center group">
+                <div className="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-amber-200 transition-all duration-300">
+                  <Headphones className="w-8 h-8 text-amber-600" />
+                </div>
+                <h3 className="text-lg font-semibold mb-2 text-gray-900">Studio-Quality Sound</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">Generate high fidelity music with pristine audio quality using advanced AI technology.</p>
+              </div>
+
+              {/* Multiple Music Styles */}
+              <div className="text-center group">
+                <div className="w-16 h-16 bg-cyan-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-cyan-200 transition-all duration-300">
+                  <Mic className="w-8 h-8 text-cyan-600" />
+                </div>
+                <h3 className="text-lg font-semibold mb-2 text-gray-900">Multiple Music Styles</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">Create any genre with AI Song Maker - from pop and classical to electronic and jazz.</p>
+              </div>
+
+              {/* Easy to Use */}
+              <div className="text-center group">
+                <div className="w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-indigo-200 transition-all duration-300">
+                  <Zap className="w-8 h-8 text-indigo-600" />
+                </div>
+                <h3 className="text-lg font-semibold mb-2 text-gray-900">Easy to Use</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">Simple text-to-music interface makes AI music generation accessible to everyone.</p>
+              </div>
+
+              {/* Instant Downloads */}
+              <div className="text-center group">
+                <div className="w-16 h-16 bg-teal-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-teal-200 transition-all duration-300">
+                  <Download className="w-8 h-8 text-teal-600" />
+                </div>
+                <h3 className="text-lg font-semibold mb-2 text-gray-900">Instant Downloads</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">Download your AI generated music immediately in high quality audio formats.</p>
+              </div>
+
+              {/* Commercial License */}
+              <div className="text-center group">
+                <div className="w-16 h-16 bg-violet-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-violet-200 transition-all duration-300">
+                  <Heart className="w-8 h-8 text-violet-600" />
+                </div>
+                <h3 className="text-lg font-semibold mb-2 text-gray-900">Commercial License</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">Use AI Song Maker music freely in your content, videos, podcasts and more.</p>
+              </div>
             </div>
           </div>
         </section>
@@ -359,14 +403,14 @@ export default function ClientPage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
               <Card className="border-0 shadow-sm hover:shadow-lg transition-all duration-300 bg-white hover:scale-105 transform">
                 <CardContent className="p-6">
-                  <div className="relative mb-4">
+                  <div className="relative mb-4 h-48">
                     <Image
                       src="/images/music-cover-1.png"
                       alt="AI Song Maker generated City Lights track"
-                      className="w-full h-48 object-cover rounded-lg"
-                      width={400}
-                      height={192}
-                      priority
+                      fill
+                      className="object-cover rounded-lg"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      priority={false}
                     />
                   </div>
                   <h3 className="font-semibold text-lg mb-2">"City Lights"</h3>
@@ -381,14 +425,14 @@ export default function ClientPage() {
 
               <Card className="border-0 shadow-sm hover:shadow-lg transition-all duration-300 bg-white hover:scale-105 transform">
                 <CardContent className="p-6">
-                  <div className="relative mb-4">
+                  <div className="relative mb-4 h-48">
                     <Image
                       src="/images/music-cover-2.png"
                       alt="AI Song Generator created Echoes of Time"
-                      className="w-full h-48 object-cover rounded-lg"
-                      width={400}
-                      height={192}
-                      priority
+                      fill
+                      className="object-cover rounded-lg"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      priority={false}
                     />
                   </div>
                   <h3 className="font-semibold text-lg mb-2">"Echoes of Time"</h3>
@@ -403,13 +447,14 @@ export default function ClientPage() {
 
               <Card className="border-0 shadow-sm hover:shadow-lg transition-all duration-300 bg-white hover:scale-105 transform">
                 <CardContent className="p-6">
-                  <div className="relative mb-4">
+                  <div className="relative mb-4 h-48">
                     <Image
                       src="/images/music-cover-3.png"
                       alt="Loop 808 made with AI Song Maker"
-                      className="w-full h-48 object-cover rounded-lg"
-                      width={400}
-                      height={192}
+                      fill
+                      className="object-cover rounded-lg"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      priority={false}
                     />
                   </div>
                   <h3 className="font-semibold text-lg mb-2">"Loop 808"</h3>
@@ -424,13 +469,14 @@ export default function ClientPage() {
 
               <Card className="border-0 shadow-sm hover:shadow-lg transition-all duration-300 bg-white hover:scale-105 transform">
                 <CardContent className="p-6">
-                  <div className="relative mb-4">
+                  <div className="relative mb-4 h-48">
                     <Image
                       src="/images/music-cover-4.png"
                       alt="Smile Again - AI Song Generator demo"
-                      className="w-full h-48 object-cover rounded-lg"
-                      width={400}
-                      height={192}
+                      fill
+                      className="object-cover rounded-lg"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      priority={false}
                     />
                   </div>
                   <h3 className="font-semibold text-lg mb-2">"Smile Again"</h3>
@@ -630,7 +676,11 @@ export default function ClientPage() {
                       MP3 download
                     </li>
                   </ul>
-                  <Button variant="outline" className="w-full border-2 hover:bg-gray-50 bg-transparent mb-3">
+                  <Button
+                    variant="outline"
+                    className="w-full border-2 hover:bg-gray-50 bg-transparent mb-3"
+                    onClick={() => window.open('https://www.udio.com/song-builder', '_blank', 'noopener,noreferrer')}
+                  >
                     Start Free Now
                   </Button>
                   <p className="text-sm text-gray-500">No credit card required</p>

@@ -119,7 +119,7 @@ export function Footer() {
                 Sitemap
               </a>
             </div>
-            <div className="text-sm text-gray-400">© 2024 AI Song Maker. All rights reserved.</div>
+            <div className="text-sm text-gray-400">© 2025 AI Song Maker. All rights reserved.</div>
           </div>
         </div>
       </div>

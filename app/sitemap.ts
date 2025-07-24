@@ -8,8 +8,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const pages = [
     '',
     '/blog',
-    '/use-cases', 
-    '/prompt-examples'
+    '/use-cases',
+    '/prompt-examples',
+    '/ai-summary'
   ]
 
   // Generate sitemap entries for all languages

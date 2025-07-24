@@ -10,7 +10,7 @@ export function WebsiteSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "AI Song Maker",
+    "name": "AI Song Maker 2025",
     "description": "Create original AI songs online from your lyrics, moods, or ideas. Choose a voice, pick a style, and download full-length tracks in seconds.",
     "url": "https://aisongmaker.pro",
     "potentialAction": {
@@ -41,7 +41,7 @@ export function SoftwareApplicationSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "AI Song Maker",
+    "name": "AI Song Maker 2025",
     "description": "AI Song Generator that creates original songs from lyrics, moods, or ideas. Choose voices, pick styles, and download full-length tracks instantly.",
     "url": "https://aisongmaker.pro",
     "applicationCategory": "MultimediaApplication",
@@ -202,7 +202,7 @@ export function OrganizationSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "AI Song Maker",
+    "name": "AI Song Maker 2025",
     "description": "AI Song Generator platform that enables creators to generate original songs from lyrics and ideas instantly.",
     "url": "https://aisongmaker.pro",
     "logo": "https://aisongmaker.pro/logo.png",
@@ -256,7 +256,7 @@ export function ArticleSchema({
     },
     "publisher": {
       "@type": "Organization",
-      "name": "AI Song Maker",
+      "name": "AI Song Maker 2025",
       "logo": {
         "@type": "ImageObject",
         "url": "https://aisongmaker.pro/logo.png"
