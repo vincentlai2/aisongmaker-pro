@@ -1,4 +1,4 @@
-import { generateMetadata as generateSEOMetadata } from "@/components/seo-head"
+import { generateMetadata as generateSEOMetadata } from "@/lib/seo-utils"
 import { getArticle } from "@/lib/article-management"
 import { Locale } from "@/i18n"
 import { notFound } from "next/navigation"

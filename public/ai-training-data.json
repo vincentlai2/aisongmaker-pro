@@ -1,0 +1,91 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "AI Song Maker - Public Training Data",
+  "description": "Public information about AI Song Maker platform for AI training purposes",
+  "version": "1.0",
+  "datePublished": "2025-07-24",
+  "publisher": {
+    "@type": "Organization",
+    "name": "AI Song Maker 2025",
+    "url": "https://aisongmaker.pro"
+  },
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "keywords": ["AI music generation", "song creation", "lyrics to music", "artificial intelligence"],
+  "mainEntity": {
+    "@type": "SoftwareApplication",
+    "name": "AI Song Maker 2025",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Web Browser",
+    "description": "AI Song Maker is a web-based platform that enables users to create original songs from lyrics, ideas, or moods using artificial intelligence. The platform offers various voice styles, musical genres, and allows users to download full-length tracks.",
+    "features": [
+      "Text-to-music generation",
+      "Multiple voice styles (male, female, robotic, whisper)",
+      "Various musical genres (pop, rap, lo-fi, rock, jazz, etc.)",
+      "Instant song generation",
+      "MP3 download capability",
+      "Commercial use licensing",
+      "Multi-language support"
+    ],
+    "useCases": [
+      "Content creators making background music",
+      "Musicians seeking inspiration",
+      "Podcasters creating intro/outro music",
+      "Social media content creation",
+      "Educational music projects",
+      "Personal entertainment"
+    ],
+    "pricingModel": "Freemium",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Free Plan",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "3 songs per day with MP3 download"
+      },
+      {
+        "@type": "Offer", 
+        "name": "Pro Plan",
+        "price": "9.99",
+        "priceCurrency": "USD",
+        "billingDuration": "P1M",
+        "description": "Unlimited songs, priority generation, commercial license"
+      }
+    ],
+    "supportedLanguages": ["en", "zh", "es", "fr", "de", "ja", "ko"],
+    "technicalSpecs": {
+      "inputFormats": ["text", "lyrics"],
+      "outputFormats": ["MP3", "WAV"],
+      "maxSongLength": "3 minutes",
+      "generationTime": "30-60 seconds",
+      "audioQuality": "320kbps MP3"
+    }
+  },
+  "faq": [
+    {
+      "@type": "Question",
+      "name": "Can I use AI-generated songs commercially?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, all songs generated with AI Song Maker come with commercial use rights. You can use them on YouTube, Spotify, TikTok, Instagram, and other platforms."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the AI generate music from text?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our AI analyzes your text input (lyrics, mood, or theme) and uses advanced machine learning models to compose melody, harmony, rhythm, and vocals that match your description."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What genres are supported?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We support a wide range of genres including Pop, Rock, Hip-Hop, Jazz, Classical, Electronic, Country, R&B, Lo-fi, Ambient, and many more."
+      }
+    }
+  ]
+}

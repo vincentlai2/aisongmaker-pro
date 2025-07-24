@@ -5,7 +5,6 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Header } from "@/components/header"
-import { EnhancedStructuredData } from "@/components/enhanced-structured-data"
 
 // Import components normally to avoid module resolution issues
 import { EnhancedAudioPlayer } from "@/components/enhanced-audio-player"
@@ -50,7 +49,6 @@ import {
 export default function ClientPage() {
   const [activeFilter, setActiveFilter] = useState("All")
   const [lyrics, setLyrics] = useState("")
-  const [isGenerating, setIsGenerating] = useState(false)
 
   const songCategories = ["All", "Pop", "Rap", "Lo-fi", "Rock", "Electronic"]
 
@@ -101,16 +99,13 @@ export default function ClientPage() {
   }
 
   const handleGenerate = () => {
-    if (lyrics.trim().length < 10) {
-      alert("Please add more details to your lyrics or song idea (at least 10 characters)")
-      return
-    }
-    setIsGenerating(true)
-    // Simulate generation process
-    setTimeout(() => {
-      setIsGenerating(false)
-      alert("Demo: Your song would be generated here! 🎵")
-    }, 3000)
+    // Redirect to Udio with the lyrics as a parameter (if any)
+    const encodedLyrics = lyrics.trim() ? encodeURIComponent(lyrics.trim()) : ''
+    const url = encodedLyrics
+      ? `https://www.udio.com/song-builder?prompt=${encodedLyrics}`
+      : 'https://www.udio.com/song-builder'
+
+    window.open(url, '_blank', 'noopener,noreferrer')
   }
 
   // Handle keyboard shortcuts
@@ -123,7 +118,6 @@ export default function ClientPage() {
 
   return (
     <>
-      <EnhancedStructuredData />
       <div className="min-h-screen bg-white">
         <Header />
 
@@ -238,26 +232,11 @@ export default function ClientPage() {
                     <Button
                       size="lg"
                       onClick={handleGenerate}
-                      disabled={isGenerating}
-                      className={`w-fit px-8 py-3 text-base font-semibold rounded-xl transition-all duration-300 ${
-                        isGenerating
-                          ? "bg-gradient-to-r from-purple-400 to-blue-400 cursor-wait opacity-80"
-                          : "bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98]"
-                      } text-white`}
+                      className="w-fit px-8 py-3 text-base font-semibold rounded-xl transition-all duration-300 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98]"
                     >
-                    {isGenerating ? (
-                      <>
-                        <div className="w-4 h-4 mr-2 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                        Creating Your Song...
-                      </>
-                    ) : (
-                      <>
-                        <Sparkles className="w-4 h-4 mr-2" />
-                        Generate Music
-                        <span className="ml-2 bg-white/20 px-2 py-1 rounded text-xs font-medium">2</span>
-                      </>
-                    )}
-                  </Button>
+                      <Sparkles className="w-4 h-4 mr-2" />
+                      Generate Music
+                    </Button>
                   </div>
 
                   {/* Bottom Actions */}
@@ -284,9 +263,9 @@ export default function ClientPage() {
         {/* 2. What is AI Song Maker */}
         <section className="py-12 sm:py-16 px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">What Is AI Song Maker?</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">What Is AI Song Maker 2025?</h2>
             <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              AI Song Maker turns any lyric or idea into a fully arranged song. Our AI composes melody, applies voice,
+              AI Song Maker 2025 turns any lyric or idea into a fully arranged song. Our AI composes melody, applies voice,
               and generates downloadable audio—within seconds.
             </p>
           </div>
@@ -296,7 +275,7 @@ export default function ClientPage() {
         <section className="py-16 px-4 bg-gradient-to-br from-gray-50 to-purple-50/30">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Everything you need with AI Song Maker</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Everything you need with AI Song Maker 2025</h2>
               <p className="text-gray-600">Powerful features designed for creators of all levels</p>
             </div>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
@@ -697,7 +676,11 @@ export default function ClientPage() {
                       MP3 download
                     </li>
                   </ul>
-                  <Button variant="outline" className="w-full border-2 hover:bg-gray-50 bg-transparent mb-3">
+                  <Button
+                    variant="outline"
+                    className="w-full border-2 hover:bg-gray-50 bg-transparent mb-3"
+                    onClick={() => window.open('https://www.udio.com/song-builder', '_blank', 'noopener,noreferrer')}
+                  >
                     Start Free Now
                   </Button>
                   <p className="text-sm text-gray-500">No credit card required</p>

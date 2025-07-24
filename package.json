@@ -1,7 +1,18 @@
 {
-  "name": "my-v0-project",
-  "version": "0.1.0",
+  "name": "aisongmaker-pro",
+  "version": "1.0.0",
   "private": true,
+  "description": "AI Song Maker 2025 - Create AI Songs from Lyrics Online",
+  "homepage": "https://aisongmaker.pro",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vincentlai2/aisongmaker-pro.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vincentlai2/aisongmaker-pro/issues"
+  },
+  "author": "Vincent Lai",
+  "keywords": ["ai", "music", "song-generator", "lyrics", "nextjs", "typescript"],
   "scripts": {
     "build": "next build",
     "dev": "next dev",
